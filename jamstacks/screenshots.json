@@ -1,0 +1,22 @@
+{
+  "templateId": "next-resume-sharp",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "175ccd9645dfcfd7824c9579e1aa6d3ef871d1ffda70678219c754a912784010",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 172757
+    },
+    {
+      "mode": "dark",
+      "sha256": "4b264fd9f826af087c539c5ad20b1c79c4fbd33d096056e9e63293612436d6b0",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 171211
+    }
+  ]
+}

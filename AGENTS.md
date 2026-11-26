@@ -17,9 +17,10 @@ The `.claude/skills/` folder holds `write-plan` (drafts `plan/PLAN.md`) and `cle
 
 ## Structure and content
 
-`content/business.ts` holds the starter's shared business details and sample copy. When building a
-site, write page-specific copy directly in the route's `app/**/page.tsx` as JSX children of named React
-components. Put headings, calls to action, labels and captions in page order. Backing components
+`content/resume.ts` owns the profile, availability, working hours, roles, skills, work, education and
+credits. `content/business.ts` owns the public email, phone and shared enquiry copy.
+`lib/resume-data.ts` validates résumé content and `lib/career-rule.ts` calculates date geometry.
+Edit page-specific copy directly in the route's `app/**/page.tsx` as JSX children of named React components. Put headings, calls to action, labels and captions in page order. Backing components
 own the semantic markup, Tailwind styles, accessibility and behavior. Keep typed data in `content/`
 for values the site reads programmatically, including contact details and structured collections.
 Document fields and validate IDs, required
@@ -33,7 +34,8 @@ illustrations and palette rather than adding unrelated assets.
 Use utilities in components. `app/tailwind.input.css` owns tokens, theme mappings, base styles, small
 shared components and illustration/state rules. Only the template palette exists. Add colour tokens
 in light, media-dark and explicit-dark blocks and map them through @theme inline. Prefer tokens over
-repeated dark: utilities. Restyle the neutral header, footer and PageHead to suit the business.
+repeated dark: utilities. `components/proof-art.tsx` owns the proofing SVGs. The header, footer, Contact
+head and 404 use the same artwork and fonts.
 Keep semantic headings, keyboard focus, sufficient contrast, a skip link, reduced motion and print styles.
 Map --jamstacks-* and toggle variables; primary fill must support white button text in both modes.
 

@@ -1,13 +1,32 @@
 import { business } from '../content/business.ts';
+import { education, experience, profile, skills } from '../content/resume.ts';
 import { absoluteUrl } from './paths.ts';
 
-/** Replace Organization with the appropriate business schema when designing a template. */
-export function businessStructuredData() {
+export function profileStructuredData() {
   const url = absoluteUrl('/');
+  const currentRole = experience.find(role => role.end === null);
   return {
-    '@context': 'https://schema.org', '@type': 'Organization',
-    name: business.name, description: business.introduction, email: business.email,
-    ...(business.phone ? { telephone: business.phone } : {}), ...(url ? { url } : {}),
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: `${profile.name} — Resume`,
+    ...(url ? { url } : {}),
+    mainEntity: {
+      '@type': 'Person',
+      name: profile.name,
+      jobTitle: profile.title,
+      email: business.email,
+      telephone: business.phone,
+      ...(url ? { url } : {}),
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: profile.location.locality,
+        addressRegion: profile.location.region,
+        addressCountry: profile.location.country,
+      },
+      knowsAbout: skills.map(skill => skill.label),
+      alumniOf: education.map(entry => ({ '@type': 'EducationalOrganization', name: entry.institution })),
+      ...(currentRole ? { worksFor: { '@type': 'Organization', name: currentRole.organisation } } : {}),
+    },
   };
 }
 

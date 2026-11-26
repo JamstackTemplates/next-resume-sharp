@@ -1,20 +1,25 @@
 import type { ReactNode } from 'react';
+import type { CareerRuleData } from '../lib/career-rule';
+import { ColorCalibrationBar, Crops, MiniCareerRule } from './proof-art';
 
-/** Heading block for inner pages: eyebrow, large title (use <em> for the accent words) and a lede. */
-export function PageHead({ eyebrow, title, children, id, before }: {
-  eyebrow: string;
-  title: ReactNode;
-  children?: ReactNode;
-  id?: string;
-  /** Optional illustration above the eyebrow. */
-  before?: ReactNode;
-}) {
-  return (
-    <header className="wrap pt-[clamp(2.5rem,6vw,4.5rem)] pb-[clamp(1.5rem,3vw,2.5rem)]">
-      {before}
-      <p className="eyebrow">{eyebrow}</p>
-      <h1 id={id} className="mt-3 mb-5 max-w-[18ch] text-[clamp(2.6rem,6.5vw,4.6rem)]">{title}</h1>
-      {children ? <div className="max-w-(--measure) text-[clamp(1.08rem,1.6vw,1.22rem)] text-muted">{children}</div> : null}
-    </header>
-  );
+export function PageHead({ children, data }: { children: ReactNode; data: CareerRuleData }) {
+  return <header className="wrap grid gap-5 pt-9 pb-8 md:grid-cols-12 md:items-end md:pt-16 md:pb-11">
+    <div className="proof-frame relative px-5 py-5 sm:px-7 md:col-span-8 md:py-7">
+      <Crops/>
+      <div aria-hidden="true" className="mb-3 flex items-center justify-between gap-2 font-mono text-[.66rem] tracking-[.09em] text-muted uppercase">
+        <span>FOLIO 02 · DIRECT ENQUIRY</span>
+        <ColorCalibrationBar/>
+      </div>
+      {children}
+    </div>
+    <div className="text-muted md:col-span-4 md:pb-2"><MiniCareerRule data={data} labels/></div>
+  </header>;
+}
+
+export function PageHeading({ children }: { children: ReactNode }) {
+  return <h1 className="expanded text-[clamp(2.7rem,6.7vw,6.3rem)] leading-[.9] tracking-[-.045em] [word-spacing:.04em]">{children}</h1>;
+}
+
+export function PageIntroduction({ children }: { children: ReactNode }) {
+  return <p className="mt-5 max-w-[63ch] text-base text-muted md:text-lg">{children}</p>;
 }

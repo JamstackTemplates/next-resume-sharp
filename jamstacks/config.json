@@ -1,0 +1,19 @@
+{
+  "name": "Personal resume",
+  "description": "Sharp, single-page resume and CV, with experience, skills and printable layout.",
+  "tech": "next",
+  "type": "resume",
+  "style": "sharp",
+  "internal": false,
+  "components": [
+    "support-form"
+  ],
+  "configFile": "site.config.json",
+  "screenshots": {
+    "light": "jamstacks/home-light.jpg",
+    "dark": "jamstacks/home-dark.jpg",
+    "theme": {
+      "strategy": "media"
+    }
+  }
+}
